@@ -1,0 +1,29 @@
+mysql:
+    image: mysql:5.7.17
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: asdasd11
+      MYSQL_DATABASE: test
+      MYSQL_USER: utest
+      MYSQL_PASSWORD: password
+    volumes:
+      - data:/var/lib/mysql 
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.6.6-2
+    container_name: phpmyadmin
+    environment:
+       PMA_ARBITRARY: 1
+       PMA_HOST: mysql
+    links:
+      - mysql:mysql
+nginx:
+    #        image: apsl/nginx-proxy-htpasswd:1.0
+    build: nginx
+    environment:
+      NGINX_PROXY_HTPASSWD_DOMAIN:  phpmyadmin 
+      NGINX_PROXY_HTPASSWD_USERNAME: admin
+      NGINX_PROXY_HTPASSWD_PASSWORD: mysuperpassasd
+    links:
+      - phpmyadmin:phpmyadmin
+    ports:
+     - 8881:80
