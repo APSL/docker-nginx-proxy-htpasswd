@@ -16,8 +16,7 @@ phpmyadmin:
        PMA_HOST: mysql
     links:
       - mysql:mysql
-nginx:
-    #        image: apsl/nginx-proxy-htpasswd:1.0
+nginx_proxy_htpasswd:
     build: nginx
     environment:
       NGINX_PROXY_HTPASSWD_DOMAIN:  phpmyadmin 
