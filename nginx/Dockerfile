@@ -5,3 +5,5 @@ COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx"]
+
+EXPOSE 8080

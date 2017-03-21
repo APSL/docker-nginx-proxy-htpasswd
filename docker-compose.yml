@@ -25,4 +25,4 @@ nginx_proxy_htpasswd:
     links:
       - phpmyadmin:phpmyadmin
     ports:
-     - 8881:80
+     - 8881:8080
